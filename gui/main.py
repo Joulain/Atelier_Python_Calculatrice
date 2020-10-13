@@ -1,4 +1,6 @@
-from cm import cld as cld
+# v0.21
+
+from gui.cm import cld as cld
 import tkinter as tk
 
 # The size if the frame
@@ -74,7 +76,8 @@ class Application(tk.Tk):
         self.show_equation["text"] = cld.CURRENT_CALCULATOR
 
     def equals(self):
-        self.show_result["text"] = "= " + self.show_equation["text"]
+        self.show_result["text"] = "= " + cld.CURRENT_CALCULATOR
+        self.clear_environment()
 
     def clear_environment(self):
         self.show_equation["text"] = ""
