@@ -1,4 +1,4 @@
-# v0.21
+# v0.22
 
 from gui.cm import cld as cld
 import tkinter as tk
@@ -33,9 +33,9 @@ class Application(tk.Tk):
         ce.grid(column="0", row="1")
         c = tk.Button(self, text="C", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=self.clear)
         c.grid(column="1", row="1")
-        dela = tk.Button(self, text="del", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
-        dela.grid(column="2", row="1")
-        plus = tk.Button(self, text="+", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+        deletion = tk.Button(self, text="del", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=self.delete)
+        deletion.grid(column="2", row="1")
+        plus = tk.Button(self, text="+", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press("+"), self.update()])
         plus.grid(column="3", row="4")
         minus = tk.Button(self, text="-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
         minus.grid(column="3", row="3")
@@ -47,37 +47,38 @@ class Application(tk.Tk):
         coma.grid(column="2", row="5")
         absolute = tk.Button(self, text="+/-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
         absolute.grid(column="0", row="5")
-        equal = tk.Button(self, text="=", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=self.equals)
+        equal = tk.Button(self, text="=", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.equals(), self.update()])
         equal.grid(column="3", row="5")
 
     def add_number(self):
-        seven = tk.Button(self, text="7", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.seven(), self.update()])
+        seven = tk.Button(self, text="7", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(7), self.update()])
         seven.grid(column="0", row="2")
-        eight = tk.Button(self, text="8", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.eight(), self.update()])
+        eight = tk.Button(self, text="8", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(8), self.update()])
         eight.grid(column="1", row="2")
-        nine = tk.Button(self, text="9", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.nine(), self.update()])
+        nine = tk.Button(self, text="9", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(9), self.update()])
         nine.grid(column="2", row="2")
-        four = tk.Button(self, text="4", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.four(), self.update()])
+        four = tk.Button(self, text="4", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(4), self.update()])
         four.grid(column="0", row="3")
-        five = tk.Button(self, text="5", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.five(), self.update()])
+        five = tk.Button(self, text="5", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(5), self.update()])
         five.grid(column="1", row="3")
-        six = tk.Button(self, text="6", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.six(), self.update()])
+        six = tk.Button(self, text="6", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(6), self.update()])
         six.grid(column="2", row="3")
-        one = tk.Button(self, text="1", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.one(), self.update()])
+        one = tk.Button(self, text="1", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(1), self.update()])
         one.grid(column="0", row="4")
-        two = tk.Button(self, text="2", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.two(), self.update()])
+        two = tk.Button(self, text="2", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(2), self.update()])
         two.grid(column="1", row="4")
-        three = tk.Button(self, text="3", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.three(), self.update()])
+        three = tk.Button(self, text="3", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(3), self.update()])
         three.grid(column="2", row="4")
-        zero = tk.Button(self, text="0", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.zero(), self.update()])
+        zero = tk.Button(self, text="0", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(0), self.update()])
         zero.grid(column="1", row="5")
 
     def update(self):
         self.show_equation["text"] = cld.CURRENT_CALCULATOR
+        self.show_result["text"] = cld.GLOBAL_CALCULATOR
 
-    def equals(self):
-        self.show_result["text"] = "= " + cld.CURRENT_CALCULATOR
-        self.clear_environment()
+    def delete(self):
+        cld.delete()
+        self.show_equation["text"] = cld.CURRENT_CALCULATOR
 
     def clear_environment(self):
         self.show_equation["text"] = ""

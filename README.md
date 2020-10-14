@@ -6,15 +6,13 @@ master : v0.20
 
 develop : v0.20
 
-feature state : graphical command not finished (0.21)
+feature state : graphical command not finished (0.22)
 
 Current change to apply: 
 
-    - addition function (convert string into operator somehow) [gui/cm/cld.py]
-    
+    - equals when string being by operator (use previous result)
 Coming function to write:
 
     - all operator (excepte addition)
-    - del function
     - decimal function
     - relative number function
