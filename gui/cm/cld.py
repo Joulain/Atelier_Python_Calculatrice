@@ -1,4 +1,4 @@
-# v0.22
+# v0.23
 
 CURRENT_CALCULATOR = ""
 
@@ -7,7 +7,10 @@ GLOBAL_CALCULATOR = ""
 
 def press(value):
     global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + str(value)
+    try:
+        CURRENT_CALCULATOR = CURRENT_CALCULATOR + str(value)
+    finally:
+        print("operation not possible")
 
 
 def equals():

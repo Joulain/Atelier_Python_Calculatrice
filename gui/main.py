@@ -1,4 +1,4 @@
-# v0.22
+# v0.23
 
 from gui.cm import cld as cld
 import tkinter as tk
@@ -37,18 +37,18 @@ class Application(tk.Tk):
         deletion.grid(column="2", row="1")
         plus = tk.Button(self, text="+", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press("+"), self.update()])
         plus.grid(column="3", row="4")
-        minus = tk.Button(self, text="-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+        minus = tk.Button(self, text="-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press("-"), self.update()])
         minus.grid(column="3", row="3")
-        multiply = tk.Button(self, text="*", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+        multiply = tk.Button(self, text="*", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press("*"), self.update()])
         multiply.grid(column="3", row="2")
-        division = tk.Button(self, text="/", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+        division = tk.Button(self, text="/", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press("/"), self.update()])
         division.grid(column="3", row="1")
-        coma = tk.Button(self, text=",", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
-        coma.grid(column="2", row="5")
-        absolute = tk.Button(self, text="+/-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
-        absolute.grid(column="0", row="5")
-        equal = tk.Button(self, text="=", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.equals(), self.update()])
-        equal.grid(column="3", row="5")
+        coma = tk.Button(self, text=",", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda:[cld.press(","), self.update()])
+        coma.grid(column="0", row="5")
+        """absolute = tk.Button(self, text="+/-", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+        absolute.grid(column="2", row="5")"""
+        equal = tk.Button(self, text="=", justify="center", height=BUTTON_HEIGHT, width=22, command=lambda:[cld.equals(), self.update()])
+        equal.grid(column="2", row="5", columnspan="2")
 
     def add_number(self):
         seven = tk.Button(self, text="7", justify="center", height=BUTTON_HEIGHT, width=BUTTON_WIDTH, command=lambda: [cld.press(7), self.update()])
