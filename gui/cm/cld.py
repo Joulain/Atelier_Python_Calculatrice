@@ -1,88 +1,42 @@
-PREVIOUS_CALCULATOR = ""
+# v1
 
-CURRENT_CALCULATOR = ""
-
-GLOBAL_CALCULATOR = ""
-
-CURRENT_OPERATOR = ""
+CALCULATOR = ""
 
 
-def one():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "1"
+def press_number(value):
+    global CALCULATOR
+    if type(CALCULATOR) is int or type(CALCULATOR) is float:
+        CALCULATOR = ""
+    CALCULATOR = CALCULATOR + str(value)
 
 
-def two():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "2"
+def press_operator(operator):
+    global CALCULATOR
+    if type(CALCULATOR) is int:
+        CALCULATOR = str(CALCULATOR)
+    CALCULATOR = CALCULATOR + f' {str(operator)} '
 
 
-def three():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "3"
-
-
-def four():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "4"
-
-
-def five():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "5"
-
-
-def six():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "6"
-
-
-def seven():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "7"
-
-
-def eight():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "8"
-
-
-def nine():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "9"
-
-
-def zero():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR + "0"
+def press_point(point):
+    global CALCULATOR
+    temp = CALCULATOR.split(" ")
+    if len(temp[-1]) == 0:
+        CALCULATOR = CALCULATOR + f'0{str(point)}'
+    elif "." not in temp[-1]:
+        CALCULATOR = CALCULATOR + str(point)
 
 
 def equals():
-    global CURRENT_CALCULATOR
-    print(CURRENT_CALCULATOR)
+    global CALCULATOR
+    CALCULATOR = eval(CALCULATOR)
 
 
-def clear_environment():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = ""
+def delete():
+    global CALCULATOR
+    CALCULATOR = str(CALCULATOR)
+    CALCULATOR = CALCULATOR[:-1]
 
 
 def clear():
-    global CURRENT_CALCULATOR
-    global GLOBAL_CALCULATOR
-    CURRENT_CALCULATOR = GLOBAL_CALCULATOR = ""
-
-
-def addition():
-    global CURRENT_CALCULATOR
-    global CURRENT_OPERATOR
-    global GLOBAL_CALCULATOR
-    global PREVIOUS_CALCULATOR
-
-    if len(PREVIOUS_CALCULATOR) == 0:
-        PREVIOUS_CALCULATOR = CURRENT_CALCULATOR
-        CURRENT_CALCULATOR = ""
-        CURRENT_OPERATOR = "+"
-    else:
-        PREVIOUS_CALCULATOR = PREVIOUS_CALCULATOR + CURRENT_CALCULATOR
-
+    global CALCULATOR
+    CALCULATOR = ""
