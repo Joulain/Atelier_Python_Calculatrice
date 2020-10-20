@@ -1,36 +1,42 @@
-# v0.23
+# v1
 
-CURRENT_CALCULATOR = ""
-
-GLOBAL_CALCULATOR = ""
+CALCULATOR = ""
 
 
-def press(value):
-    global CURRENT_CALCULATOR
-    try:
-        CURRENT_CALCULATOR = CURRENT_CALCULATOR + str(value)
-    finally:
-        print("operation not possible")
+def press_number(value):
+    global CALCULATOR
+    if type(CALCULATOR) is int or type(CALCULATOR) is float:
+        CALCULATOR = ""
+    CALCULATOR = CALCULATOR + str(value)
+
+
+def press_operator(operator):
+    global CALCULATOR
+    if type(CALCULATOR) is int:
+        CALCULATOR = str(CALCULATOR)
+    CALCULATOR = CALCULATOR + f' {str(operator)} '
+
+
+def press_point(point):
+    global CALCULATOR
+    temp = CALCULATOR.split(" ")
+    if len(temp[-1]) == 0:
+        CALCULATOR = CALCULATOR + f'0{str(point)}'
+    elif "." not in temp[-1]:
+        CALCULATOR = CALCULATOR + str(point)
 
 
 def equals():
-    global CURRENT_CALCULATOR
-    global GLOBAL_CALCULATOR
-    GLOBAL_CALCULATOR = eval(CURRENT_CALCULATOR)
-    CURRENT_CALCULATOR = ""
+    global CALCULATOR
+    CALCULATOR = eval(CALCULATOR)
 
 
 def delete():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = CURRENT_CALCULATOR[:-1]
-
-
-def clear_environment():
-    global CURRENT_CALCULATOR
-    CURRENT_CALCULATOR = ""
+    global CALCULATOR
+    CALCULATOR = str(CALCULATOR)
+    CALCULATOR = CALCULATOR[:-1]
 
 
 def clear():
-    global CURRENT_CALCULATOR
-    global GLOBAL_CALCULATOR
-    CURRENT_CALCULATOR = GLOBAL_CALCULATOR = ""
+    global CALCULATOR
+    CALCULATOR = ""
