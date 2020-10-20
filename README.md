@@ -4,10 +4,10 @@ L'atelier à été créer afin d'apprendre le fonctionnement du python en tant q
 
 master : v0.20
 
-develop : v0.20
+develop : v1
 
-feature state : graphical command not finished (0.23)
+feature : v1
 
 Current change to apply: 
-
-    - equals when string being by operator (use previous result)
+    
+    None
